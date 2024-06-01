@@ -4,4 +4,4 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - run: ~/kadai4/test_gcd.sh
+      - run: /home/hoso/kadai4/test_gcd.sh
