@@ -1,7 +1,16 @@
 name: actions-kadai4
 on: [push]
 jobs:
-  check-bats-version:
+  run-gcd-tests:
     runs-on: ubuntu-latest
     steps:
-      - run: ../../test_gcd.sh
+      - name: Check out repository
+        uses: actions/checkout@v2
+      
+      - name: Set up shell
+        uses: actions/setup-python@v2
+        with:
+          shell: bash
+      
+      - name: Run GCD tests
+        run: ./test_gcd.sh
