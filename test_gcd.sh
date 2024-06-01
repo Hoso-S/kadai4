@@ -32,5 +32,5 @@ test_gcd "0 5" 5 "gcd of 0 and 5 is 5"
 test_gcd "10 0" 10 "gcd of 10 and 0 is 10"
 test_gcd "100 100" 100 "gcd of 100 and 100 is 100"
 test_gcd "1000 500" 500 "gcd of 1000 and 500 is 500"
-#test_gcd "abc def" "" "non-numeric input"
+test_gcd "abc def" "" "non-numeric input"
 
