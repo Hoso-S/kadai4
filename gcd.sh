@@ -24,5 +24,5 @@ gcd() {
 
 # 最大公約数を計算して出力
 result=$(gcd $num1 $num2)
-echo "The greatest common divisor of $num1 and $num2 is: $result"
-
+#echo "The greatest common divisor of $num1 and $num2 is: $result"
+echo "$result"  # 数値をそのまま出力する
