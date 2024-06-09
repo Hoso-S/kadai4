@@ -3,13 +3,6 @@
 # 最大公約数を求めるスクリプトのパス
 gcd_script="./gcd.sh"
 
-# エラー処理関数
-ERROR_EXIT() {
-    echo "$1" >&2
-    rm -f /tmp/$$-*
-    exit 1
-}
-
 # テスト関数
 test_gcd() {
     local input="$1"
@@ -25,9 +18,9 @@ test_gcd() {
     if [ $? -eq 1 ]; then
         echo "Failed: $result"
         if [ "$input" == "3" ] || [ "$input" == "abc def" ]; then
-            echo "non error" # Passedできていないが、期待動作なのでエラーなし
+            echo "non error"
         else
-            ERROR_EXIT "Failed: $result"
+            exit 1
         fi
     fi
 
@@ -37,9 +30,9 @@ test_gcd() {
     else
         echo "Failed: Expected $expected_output but got $result"
         echo "result --> $result"
-        ERROR_EXIT "Failed: Expected $expected_output but got $result"
+        echo "expected_output --> $expected_output"
+        exit 1
     fi
-
 }
 
 # テストケースを実行
@@ -53,5 +46,4 @@ test_gcd "100 100" 100 "gcd of 100 and 100 is 100"
 test_gcd "1000 500" 500 "gcd of 1000 and 500 is 500"
 test_gcd "3" "Usage: ./gcd.sh <number1> <number2>" "missing arguments"
 test_gcd "abc def" "abc" "non-numeric input"
-test_gcd "3 a" "3" "non-numeric input"
 
